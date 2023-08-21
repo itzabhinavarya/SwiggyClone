@@ -1,0 +1,92 @@
+.hero-food-card {
+  padding: 0 11rem;
+}
+
+.food-card-title h3 {
+  font-weight: bold;
+}
+
+/* .food-card {
+  background-color: aquamarine;
+} */
+
+.food {
+  /* background-color: rgb(188, 188, 205); */
+  filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 8px);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.food:hover{
+    scale: 0.98;
+    transition: 0.3s ease-in-out all;
+}
+
+.food-img {
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  /* background-color: red; */
+}
+
+.food-img::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: calc(61px);
+  background: linear-gradient(rgba(27, 30, 36, 0) 0%, rgb(27, 30, 36) 84.21%);
+}
+
+.food-img img {
+  /* width: 100%;
+  height: 100%; */
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+  margin: 0;
+}
+.food-name {
+  padding-top: 5px;
+}
+
+.food-name p {
+  font-weight: bolder;
+  margin: 0;
+}
+
+.food-rating {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+.food-rating svg,
+p {
+  margin: 0;
+}
+
+.food-name,
+.food-rating,
+.food-category,
+.restaurant-name {
+  padding-left: 12px;
+}
+
+.food-offer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  z-index: 9;
+}
+
+.food-offer p {
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  font-size: 1.2rem;
+  width: 100%;
+  color: var(--white);
+  text-transform: uppercase;
+}

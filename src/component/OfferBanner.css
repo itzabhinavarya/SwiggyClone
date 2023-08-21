@@ -1,0 +1,28 @@
+.AllOffers {
+  padding: 1rem 11rem;
+}
+.offer-title h2{
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.hero-swiper {
+  display: flex !important;
+  overflow-x: scroll;
+}
+.swiper-slide {
+  width: 300px !important;
+}
+
+.swiper-wrapper{
+  display: flex;
+  gap: 10px;
+}
+
+.swiper-slide img{
+    width: inherit;
+}
+
+.newCustom{
+  width: 105px !important;
+}
