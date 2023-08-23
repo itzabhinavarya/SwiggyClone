@@ -5,3 +5,9 @@
     display: flex;
     gap: 1rem;
 }
+
+@media screen and (max-width:740px) {
+    .food-search{
+        padding: 10px;
+    }
+}

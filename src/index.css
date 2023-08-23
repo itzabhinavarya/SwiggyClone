@@ -20,7 +20,9 @@ code {
 
 :root{
   --white : #fff;
+  --black:#000;
 }
+
 
 li{
   cursor: pointer;

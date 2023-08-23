@@ -2,6 +2,13 @@
   padding: 0 11rem;
 }
 
+@media screen and (max-width:740px) {
+  .hero-food-card{
+    padding: 0 10px !important;
+  }
+}
+
+
 .food-card-title h3 {
   font-weight: bold;
 }
