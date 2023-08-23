@@ -1,27 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import "./search.css";
-const Search = () => {
-    //   let searchText = "KFC Burger";
-    const [searchText, setSearchText] = useState();
-  return (
-    <div className="food-search">
-      <div className="input-search">
-        <input
-          type="text"
-          className="form-control search-box"
-          placeholder="Search For Food"
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        />
-        <button className="btn btn-dark">Search</button>
-      </div>
-      {/*<div className="search-content">
-        <p>Result Showing for "{searchText}"</p>
-        </div>*/}
-    </div>
+
+export function FilterData(searchText, FoodData) {
+  const words = searchText.toLowerCase().split(" ");
+  const formattedWords = words.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1)
   );
+  const finalSearch = formattedWords.join(" ");
+  var data = FoodData.filter((FoodData) => FoodData.name.includes(finalSearch));
+  return data;
+}
+const Search = () => {
+  return <></>;
 };
 
 export default Search;

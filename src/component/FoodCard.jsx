@@ -1,15 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./FoodCard.css";
+// import "./search.css";
 import FoodData from "../helper/FoodData";
+import { FilterData } from "./search";
+
 const FoodCard = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchFoodData, setSearchFoodData] = useState([]);
+
+  // Update filtered data when search term changes
+  useEffect(() => {
+    const filteredData = FilterData(searchTerm, FoodData);
+    setSearchFoodData(filteredData);
+  }, [searchTerm]);
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
   return (
     <>
       <div className="hero-food-card">
+        <div className="food-search d-flex gap-3">
+            <input
+              type="text"
+              className="form-control search-box"
+              placeholder="Search For Food"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+          <button className="btn btn-dark">Search</button>
+        </div>
         <div className="food-card-title">
           <h3>Trending Foods</h3>
         </div>
-        <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 food-card">
-          {FoodData.map((value, index) => (
+        <div className="row row-cols-sm-2 row-cols-md-2 row-cols-lg-4 food-card">
+          {searchFoodData.map((value, index) => (
             <div className="col-sm food" key={index}>
               <div className="food-img">
                 <img src={value.img} alt="" />

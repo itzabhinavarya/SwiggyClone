@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./navbar.css";
 
 import { TbPercentage } from "react-icons/tb";
@@ -6,15 +6,19 @@ import { LuHelpingHand } from "react-icons/lu";
 import { VscAccount } from "react-icons/vsc";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
+import {RxCross1} from 'react-icons/rx';
 
-const navbar = () => {
+const Navbar = () => {
+  const [navClick, setNavClick] = useState(false);
+  const [menu,setMenu] = useState(GiHamburgerMenu);
   return (
     <>
       <div className="navbar">
         <div className="logo">
           <h1>HappyCorner</h1>
         </div>
-        <div className=" responsive-navbar">
+        {/*<div className="nav-links">*/}
+        <div className={navClick === true ? "responsive-navbar" : "nav-links"}>
           <ul>
             {/*<li>
             <BiSearch />
@@ -39,10 +43,16 @@ const navbar = () => {
           </ul>
         </div>
         <div className="hamburger">
-          <GiHamburgerMenu size="1.6rem"/>
+          <GiHamburgerMenu
+            size="1.6rem"
+            onClick={() => {
+              setNavClick(!navClick);
+              // setMenu(menu === GiHamburgerMenu ? RxCross1 : GiHamburgerMenu);
+            }}
+          />
         </div>
       </div>
     </>
   );
 };
-export default navbar;
+export default Navbar;

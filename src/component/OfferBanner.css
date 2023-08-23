@@ -1,6 +1,13 @@
 .AllOffers {
   padding: 1rem 11rem;
 }
+
+@media screen and (max-width:740px) {
+  .AllOffers{
+    padding: 10px;
+  }
+}
+
 .offer-title h2{
   font-size: 1.3rem;
   font-weight: bold;
