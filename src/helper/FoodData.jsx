@@ -127,8 +127,6 @@ const FoodData = [
         restaurant : "Laxmi Nagar",
         offer : "20% OFF Upto Rs.599"
     },
-
-    
 ]
 
 export default FoodData;

@@ -2,11 +2,23 @@ import React, { useState, useEffect } from "react";
 import "./FoodCard.css";
 // import "./search.css";
 import FoodData from "../helper/FoodData";
-import { FilterData } from "./search";
+import AddToCart from "./AddToCart";
+
+function FilterData(searchText, FoodData) {
+  const words = searchText.toLowerCase().split(" ");
+  const formattedWords = words.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1)
+  );
+  const finalSearch = formattedWords.join(" ");
+  var data = FoodData.filter((FoodData) => FoodData.name.includes(finalSearch));
+  return data;
+}
 
 const FoodCard = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchFoodData, setSearchFoodData] = useState([]);
+  // const [item, setItem] = useState({id});
+  const [item, setItem] = useState([]);
 
   // Update filtered data when search term changes
   useEffect(() => {
@@ -17,17 +29,32 @@ const FoodCard = () => {
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
+  const HandleCart = (id) => {
+    // Update state
+    setItem((prev) => [...prev, id]); // Push the new id to the array
+
+    // Get the current cart from localStorage, or an empty array if it doesn't exist
+    const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Add the new id to the current cart array
+    currentCart.push(id);
+
+    // Store the updated cart array in localStorage
+    localStorage.setItem("cart", JSON.stringify(currentCart));
+  };
+
+
   return (
     <>
       <div className="hero-food-card">
         <div className="food-search d-flex gap-3">
-            <input
-              type="text"
-              className="form-control search-box"
-              placeholder="Search For Food"
-              value={searchTerm}
-              onChange={handleSearch}
-            />
+          <input
+            type="text"
+            className="form-control search-box"
+            placeholder="Search For Food"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
           <button className="btn btn-dark">Search</button>
         </div>
         <div className="food-card-title">
@@ -85,8 +112,15 @@ const FoodCard = () => {
               <div className="food-category">
                 <p className="text-muted">{value.cusins}</p>
               </div>
-              <div className="restaurant-name">
+              <div className="restaurant-name d-flex align-items-center justify-content-between">
                 <p className="text-muted">{value.restaurant}</p>
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  onClick={() => HandleCart(index)}
+                >
+                  Add To Cart
+                </button>
               </div>
             </div>
           ))}

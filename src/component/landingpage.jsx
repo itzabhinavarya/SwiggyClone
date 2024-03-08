@@ -6,7 +6,7 @@ import UserData from "../helper/userData";
 import FoodCard from "./FoodCard";
 const landingpage = () => {
   return (
-    <div>
+    <div className="" style={{marginTop:"5rem"}}>
       <OfferBanner BannerAndFoodData={Bannerimg} titleData={"Best offers for you"}/>
       <OfferBanner BannerAndFoodData={FoodImg} style={{ imageSize: "110px", important: true }} titleData={`${UserData.firstName}, what's on your mind?`}/>
       <FoodCard/>

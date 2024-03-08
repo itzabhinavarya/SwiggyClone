@@ -6,16 +6,22 @@ import { LuHelpingHand } from "react-icons/lu";
 import { VscAccount } from "react-icons/vsc";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
-import {RxCross1} from 'react-icons/rx';
+import { RxCross1 } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [navClick, setNavClick] = useState(false);
-  const [menu,setMenu] = useState(GiHamburgerMenu);
+  const [menu, setMenu] = useState(GiHamburgerMenu);
   return (
     <>
-      <div className="navbar">
+      <div
+        className="navbar fixed-top"
+        style={{ zIndex: "999", backgroundColor: "#fff" }}
+      >
         <div className="logo">
-          <h1>HappyCorner</h1>
+          <Link to="/" className="text-black text-decoration-none">
+            <h1>HappyCorner</h1>
+          </Link>
         </div>
         {/*<div className="nav-links">*/}
         <div className={navClick === true ? "responsive-navbar" : "nav-links"}>
@@ -37,8 +43,16 @@ const Navbar = () => {
               Account
             </li>
             <li>
-              <AiOutlineShoppingCart />
-              Cart
+              <Link to="/addtocart" className="text-black text-decoration-none">
+                <AiOutlineShoppingCart />
+                Cart
+              </Link>
+            </li>
+            <li>
+              <Link to="/order" className="text-black text-decoration-none">
+                <AiOutlineShoppingCart />
+                Order
+              </Link>
             </li>
           </ul>
         </div>
